@@ -1,0 +1,30 @@
+{
+	"manifest_version": 3,
+	"name": "My side panel extension",
+	"version": "1.1",
+	"description": "Automatically save and organize visited URLs",
+	"permissions": ["tabs", "storage", "activeTab", "scripting", "webNavigation", "sidePanel"],
+	"host_permissions": ["<all_urls>"],
+	"action": {
+		"default_title": "Open your second brain.",
+		"default_side_panel": "index.html"
+	},
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content.js"]
+		}
+	],
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"side_panel": {
+		"default_path": "index.html"
+	}
+}
